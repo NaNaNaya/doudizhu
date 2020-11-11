@@ -1,0 +1,226 @@
+@charset "UTF-8";
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  position: relative;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 3vmin;
+}
+
+html {
+  background: #151515;
+  color: #fff;
+  overflow: hidden;
+}
+
+body {
+
+  display: -webkit-box;/*自适应布局*/
+  display: flex;
+  -webkit-box-pack: center;
+/*  均等地分割多余空间，其中一半空间被置于首个子元素前，另一半被置于最后一个子元素后*/
+          justify-content: center;
+          /*   justify-content ;用于设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式。
+          center	项目位于容器的中心。*/
+  -webkit-box-align: center;
+/*  box-align 属性规定如何对齐框的子元素。*/
+/*center	均等地分割多余的空间，一半位于子元素之上，另一半位于子元素之下。*/
+          align-items: center;
+    /*      align-items 属性定义flex子项在flex容器的当前行的侧轴（纵轴）方向上的对齐方式。*/
+		/*center	/元素位于容器的中心。/
+弹性盒子元素在该行的侧轴（纵轴）上居中放置。
+（如果该行的尺寸小于弹性盒子元素的尺寸，则会向两个方向溢出相同的长度）。*/
+
+}
+
+.slides {
+  display: grid;
+/*  它将网页划分成一个个网格，可以任意组合不同的网格，做出各种各样的布局;*/
+/*设置为grid后，子元素的float,display: inline-block,display: table-cell、vertical-align和column-*
+ * 等设置都将失效。*/
+}
+.slides > .slide {
+  grid-area: 1 / -1;
+  /*grid-area属性在网格布局中指定网格项的大小和位置，
+  grid-row-start
+grid-column-start
+grid-row-end
+grid-column-end
+grid-area属性还可用于为网格项指定名称。然后，可以通过网格容器的grid-template-areas属性引用命名网格项 。*/
+/*从第一行的-1列开始*/
+}
+.slides > button {
+  -webkit-appearance: none;
+  /* ios端和安卓端的样式显示不一样,
+  例如同一按钮(样式一样)会显示不一样的颜色,
+  导致项目整体的搭配不是很好.
+css样式:-webkit-appearance: none,就可以去除浏览器默认样式.*/
+     -moz-appearance: none;
+     /*-moz代表firefox浏览器私有属性；
+
+-ms代表IE浏览器私有属性；
+
+-webkit代表chrome、safari私有属性；
+
+-o代表Opera私有属性。*/
+          appearance: none;
+  background: transparent;
+  border: none;
+  color: white;
+  position: absolute;
+  font-size: 5rem;
+  /*rem是CSS3新增的一个相对单位（root em，根em），
+  这个单位引起了广泛关注。区别在于使用rem为元素设定字体大小时，
+  仍然是相对大小，但相对的只是HTML根元素。
+这个单位可谓集相对大小和绝对大小的优点于一身，
+通过它既可以做到只修改根元素就成比例地调整所有字体大小，
+又可以避免字体大小逐层复合的连锁反应。
+目前，除了IE8及更早版本外，所有浏览器均已支持rem。
+对于不支持它的浏览器，应对方法也很简单，就是多写一个绝对单位的声明。
+这些浏览器会忽略用rem设定的字体大小。*/
+  width: 5rem;
+  height: 5rem;
+  top: 30%;
+    opacity: 0.7;
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+  z-index: 5;
+}
+.slides > button:hover {
+  opacity: 1;
+}
+.slides > button:focus {
+	/*选择获得焦点的输入字段，并设置其样式：*/
+  outline: none;
+  /*outline （轮廓）是绘制于元素周围的一条线，
+  位于边框边缘的外围，可起到突出元素的作用。*/
+}
+
+/*以下两个都是按钮定位*/
+.slides > button:first-child {
+  left: -50%;
+}
+.slides > button:last-child {
+  right: -50%;
+}
+
+.slideContent {
+  width: 30vw;
+ /* css3自适应布局vw：1vw等于视口宽度的1%。
+  vh：1vh等于视口高度的1%。*/
+  height: 40vw;
+  background-size: cover;
+  /*cover	此时会保持图像的纵横比
+  并将图像缩放成将完全覆盖背景定位区域的最小大小。*/
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-transition: -webkit-transform 0.5s ease-in-out;
+  /*ease-in-out	规定以慢速开始和结束的过渡效果
+  （等于 cubic-bezier(0.42,0,0.58,1)）（
+  相对于匀速，（开始和结束都慢）两头慢）。*/
+  transition: -webkit-transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out;
+  transition: transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+  opacity: 0.7;
+  display: grid;
+  align-content: center;
+/*  align-content 属性在弹性容器内的各项没有占用交叉轴上所有可用的空间时对齐容器内的各项（垂直）。*/
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+          /*表示所有子元素在3D空间中呈现。*/
+  -webkit-transform:
+ /* clac用作计算*/
+   perspective(1000px) translateX(calc(100% * var(--offset))) rotateY(calc(-45deg * var(--dir)));
+          transform: perspective(1000px) translateX(calc(100% * var(--offset))) rotateY(calc(-45deg * var(--dir)));
+}
+
+/*在显示其中一个页面时,
+隐藏其他页面的文字说明
+外加文字悬浮特效*/
+.slideContentInner {
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transform: translateZ(2rem);
+          transform: translateZ(2rem);
+  -webkit-transition: opacity 0.3s linear;
+  transition: opacity 0.3s linear;
+  text-shadow: 0 0.1rem 1rem #000;
+  opacity: 0;
+}
+
+/*控制文字的样式*/
+.slideContentInner .slideSubtitle,
+.slideContentInner .slideTitle {
+  font-size: 2rem;
+  font-weight: normal;
+  letter-spacing: 0.2ch;
+  text-transform: uppercase;
+/*text-transform 属性控制文本的大小写。 
+ *  uppercase	定义仅有大写字母。*/
+  margin: 0;
+}
+.slideContentInner .slideSubtitle::before {
+  content: "€” ";
+  /*â*/
+}
+
+.slideContentInner .slideDescription {
+  margin: 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.2ch;
+  /*  单个字符间的宽度*/
+}
+/*整个页面背后的阴影*/
+.slideBackground {
+  position: fixed;
+  top: 0;
+  left: -10%;
+  right: -10%;
+  bottom: 0;
+  background-size: cover;
+  background-position: center center;
+  z-index: -1;
+  opacity: 0;
+  -webkit-transition: opacity 0.3s linear, -webkit-transform 0.3s ease-in-out;
+  transition: opacity 0.3s linear, -webkit-transform 0.3s ease-in-out;
+  transition: opacity 0.3s linear, transform 0.3s ease-in-out;
+  transition: opacity 0.3s linear, transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
+  pointer-events: none;
+  -webkit-transform: translateX(calc(10% * var(--dir)));
+          transform: translateX(calc(10% * var(--dir)));
+}
+/* 匹配.silde中所有data-active
+ 对文字的显示控制*/
+.slide[data-active] {
+  z-index: 2;
+  pointer-events: auto;
+}
+.slide[data-active] .slideBackground {
+  opacity: 0.2;
+  -webkit-transform: none;
+          transform: none;
+}
+.slide[data-active] .slideContentInner {
+  opacity: 1;
+}
+.slide[data-active] .slideContent {
+  --x: calc(var(--px) - 0.5);
+  --y: calc(var(--py) - 0.5);
+  opacity: 1;
+  -webkit-transform: perspective(1000px);
+          transform: perspective(1000px);
+}
+.slide[data-active] .slideContent:hover {
+  -webkit-transition: none;
+  transition: none;
+  -webkit-transform: perspective(1000px) rotateY(calc(var(--x) * 45deg)) rotateX(calc(var(--y) * -45deg));
+          transform: perspective(1000px) rotateY(calc(var(--x) * 45deg)) rotateX(calc(var(--y) * -45deg));
+}

@@ -1,0 +1,104 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	overflow: hidden;
+}
+
+input {
+	outline: none;
+}
+
+a {
+	color: tomato;
+	text-decoration: none;
+}
+
+button {
+	width: 200px;
+	height: 50px;
+	line-height: 50px;
+	/* background: yellow; */
+	position: absolute;
+	top: 400px;
+	left: 600px;
+	text-align: center;
+	letter-spacing: 10px;
+	color: tomato;
+	border: 2px solid red;
+	border-radius: 30px;
+	animation: button-run 3s linear;
+	background-color: rgba(0, 0, 0, 0);
+	text-shadow: 0 0 20px #000;
+}
+
+button:hover {
+	width: 201px;
+	height: 51px;
+	line-height: 50px;
+	background: rgba(175, 11, 197, 0.5);
+	position: absolute;
+	top: 400px;
+	left: 600px;
+	font-size: large;
+	text-align: center;
+	letter-spacing: 10px;
+	color: orangered;
+	border: 2px solid pink;
+}
+
+button:hover a {
+	color: orangered;
+}
+
+@keyframes button-run {
+	0% {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+	}
+	25% {
+		position: absolute;
+		top: 400px;
+		left: 300px;
+	}
+	50% {
+		position: absolute;
+		top: 350px;
+		left: 400px;
+	}
+	75% {
+		position: absolute;
+		top: 400px;
+		left: 500px;
+	}
+	100% {
+		position: absolute;
+		top: 400px;
+		left: 600px;
+	}
+}
+
+p {
+	animation: pRun 5s linear;
+}
+
+@keyframes pRun {
+	0% {
+		opacity: 0;
+	}
+	25% {
+		opacity: 0.3;
+	}
+	50% {
+		opacity: 0.6;
+	}
+	75% {
+		opacity: 0.9;
+	}
+	100% {
+		opacity: 1;
+	}
+}

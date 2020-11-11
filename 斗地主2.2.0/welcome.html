@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        a {
+            color: tomato;
+            text-decoration: none;
+        }
+
+        button {
+            width: 200px;
+            height: 50px;
+            line-height: 50px;
+            /* background: yellow; */
+            position: absolute;
+            top: 400px;
+            left: 600px;
+            text-align: center;
+            letter-spacing: 10px;
+            color: tomato;
+            border: 2px solid red;
+            border-radius: 30px;
+            animation: button-run 3s linear;
+            background-color: rgba(0, 0, 0, 0);
+            text-shadow: 0 0 20px #000;
+            
+            font-size: 20px;
+            transition:  font-size 1s; 
+        }
+
+        button:hover {
+            width: 201px;
+            height: 51px;
+            line-height: 50px;
+            background: rgba(175, 11, 197,0.5);
+            
+            position: absolute;
+            top: 400px;
+            left: 600px;
+            font-size: 25px;
+            text-align: center;
+            letter-spacing: 10px;
+        /*    color: orangered;*/
+            border: 2px solid pink;
+            background-color: transparent;
+        }
+
+        button:hover a {
+            color: orangered;
+        }
+
+        @keyframes button-run {
+            0% {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+            }
+
+            25% {
+                position: absolute;
+                top: 400px;
+                left: 300px;
+            }
+
+            50% {
+                position: absolute;
+                top: 350px;
+                left: 400px;
+            }
+
+            75% {
+                position: absolute;
+                top: 400px;
+                left: 500px;
+            }
+
+            100% {
+                position: absolute;
+                top: 400px;
+                left: 600px;
+            }
+
+        }
+        p{
+            animation: pRun 5s linear;
+        }
+        @keyframes pRun {
+            0% {
+                opacity: 0;
+            }
+            25% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.6;
+            }
+            75% {
+                opacity: 0.9;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+    </style>
+    
+
+</head>
+
+<body>
+	<div class="yinpin" style="position: absolute;">
+		<audio id="first-bgmusic" loop="loop" src="audio/首页背景音效.mp3"></audio>
+	</div>
+    <video src="video/西施3.mp4"  style="width: 100%;position: absolute;left:0;top:0px ;z-index: -99" autoplay muted loop>
+    </video>
+    <button type="button"><b><a href="the-first-page.html">开始游戏</a></b></button>
+    <p style="text-shadow:8px 5px 8px #FF0000;font-size:50px;color: pink;position: absolute;top: 400px;left: 300px;">今夜
+    </p>
+    <p style="text-shadow:8px 5px 8px #FF0000;font-size:40px;color: pink;position: absolute;top: 500px;left: 310px;">三更过后
+    </p>
+    <p style="text-shadow:8px 5px 8px #FF0000;font-size:30px;color: pink;position: absolute;top: 600px;left: 320px;">你的手办
+    </p>
+    <p style="text-shadow:8px 5px 8px #FF0000;font-size:20px;color: pink;position: absolute;top: 700px;left: 330px;">尽数归我
+    </p>
+	<script type="text/javascript" src="js/audio.js" ></script>
+</body>
+
+</html>

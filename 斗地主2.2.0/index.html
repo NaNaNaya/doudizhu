@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+
+<head>
+	<title>斗地主</title>
+	<script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+	<script src="./js/public.js"></script>
+	<script type="text/javascript" src="./js/game.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
+	<script src="./js/hint.js"></script>
+	<link rel="stylesheet" href="css/index.css" />
+</head>
+
+
+<body>
+	<!-- 炸弹、飞机、王炸的动画 -->
+	<div class="rocket"></div>   
+	<div class="rocket-boom"></div>
+	<div class="boom"></div>  
+	<div class="plane">
+		<div class="ani"></div>
+		<div class="smoke">
+			<div class="smoke-item smoke_item1"></div>
+			<div class="smoke-item smoke_item2"></div>
+			<div class="smoke-item smoke_item3"></div>
+			<div class="smoke-item smoke_item4"></div>
+		</div>
+	</div> 
+
+	
+	<!--背景视频-->
+	<div id="bg">
+		<video src="./video/bg5.mp4" muted="muted" autoplay loop></video>
+	</div>
+	<div class="animation-lantern1 animation-pc"></div>
+	<div class="animation-lantern2 animation-pc"></div>
+	<div class="animation-lantern3 animation-pc"></div>
+	<div class="animation-lantern4 animation-pc"></div>
+	<div class="animation-butterfly1 animation-pc"></div>
+	<section>
+		<!--音效-->
+		<div class="yinpin" style="position: absolute;">
+			<!--<audio id="kaichang" loop src="./audio/最新音效/MusicEx/MusicEx_Welcome.mp3"></audio>
+			<audio id="bgmusic" loop src="./audio/最新音效/MusicEx/MusicEx_Normal.mp3"></audio>-->
+			<audio id="bgmusic2" loop src="./audio/Jeff Broadbent - 主宰战场.mp3"></audio>
+			<audio id="bgmusic" autoplay="autoplay" loop src="audio/Matthew Carl Earl - 归隐.mp3"></audio>
+			<audio id="xipai" src="./audio/洗牌.mp3"></audio>
+			<audio id="fapai" src="./audio/发牌音效.mp3"></audio>
+			<audio id="qdz" src="./audio/最新音效/Man/Man_Rob1.mp3"></audio>
+			<audio id="buqiang" src="./audio/最新音效/Man/Man_NoRob.mp3"></audio>
+			<audio id="guo1" src="./audio/最新音效/Man/Man_buyao1.mp3"></audio>
+			<audio id="guo2" src="./audio/最新音效/Man/Man_buyao2.mp3"></audio>
+			<audio id="guo3" src="./audio/最新音效/Man/Man_buyao3.mp3"></audio>
+
+			<audio id="dan3" src="./audio/最新音效/Man/Man_3.mp3"></audio>
+			<audio id="dan4" src="./audio/最新音效/Man/Man_4.mp3"></audio>
+			<audio id="dan5" src="./audio/最新音效/Man/Man_5.mp3"></audio>
+			<audio id="dan6" src="./audio/最新音效/Man/Man_6.mp3"></audio>
+			<audio id="dan7" src="./audio/最新音效/Man/Man_7.mp3"></audio>
+			<audio id="dan8" src="./audio/最新音效/Man/Man_8.mp3"></audio>
+			<audio id="dan9" src="./audio/最新音效/Man/Man_9.mp3"></audio>
+			<audio id="dan10" src="./audio/最新音效/Man/Man_10.mp3"></audio>
+			<audio id="danj" src="./audio/最新音效/Man/Man_11.mp3"></audio>
+			<audio id="danq" src="./audio/最新音效/Man/Man_12.mp3"></audio>
+			<audio id="dank" src="./audio/最新音效/Man/Man_13.mp3"></audio>
+			<audio id="dana" src="./audio/最新音效/Man/Man_1.mp3"></audio>
+			<audio id="dan2" src="./audio/最新音效/Man/Man_2.mp3"></audio>
+			<audio id="dan13" src="./audio/最新音效/Man/Man_14.mp3"></audio>
+			<audio id="dan14" src="./audio/最新音效/Man/Man_15.mp3"></audio>
+			<audio id="wangzha" src="./audio/最新音效/Man/Man_wangzha.mp3"></audio>
+			<audio id="wangzha1" src="./audio/王炸音效.mp3"></audio>
+			<audio id="zhadan" src="./audio/最新音效/Man/Man_zhadan.mp3"></audio>
+			<audio id="sandaiyi" src="./audio/最新音效/Man/Man_sandaiyi.mp3"></audio>
+			<audio id="xuanpai" src="./audio/选牌.mp3"></audio>
+			<!-- 对子 -->
+			<audio id="dui3" src="./audio/最新音效/Man/Man_dui3.mp3"></audio>
+			<audio id="dui4" src="./audio/最新音效/Man/Man_dui4.mp3"></audio>
+			<audio id="dui5" src="./audio/最新音效/Man/Man_dui5.mp3"></audio>
+			<audio id="dui6" src="./audio/最新音效/Man/Man_dui6.mp3"></audio>
+			<audio id="dui7" src="./audio/最新音效/Man/Man_dui7.mp3"></audio>
+			<audio id="dui8" src="./audio/最新音效/Man/Man_dui8.mp3"></audio>
+			<audio id="dui9" src="./audio/最新音效/Man/Man_dui9.mp3"></audio>
+			<audio id="dui10" src="./audio/最新音效/Man/Man_dui10.mp3"></audio>
+			<audio id="duij" src="./audio/最新音效/Man/Man_dui11.mp3"></audio>
+			<audio id="duiq" src="./audio/最新音效/Man/Man_dui12.mp3"></audio>
+			<audio id="duik" src="./audio/最新音效/Man/Man_dui13.mp3"></audio>
+			<audio id="duia" src="./audio/最新音效/Man/Man_dui1.mp3"></audio>
+			<audio id="dui2" src="./audio/最新音效/Man/Man_dui2.mp3"></audio>
+			<!-- 三个 -->
+			<audio id="sange3" src="./audio/最新音效/Man/Man_tuple3.mp3"></audio>
+			<audio id="sange4" src="./audio/最新音效/Man/Man_tuple4.mp3"></audio>
+			<audio id="sange5" src="./audio/最新音效/Man/Man_tuple5.mp3"></audio>
+			<audio id="sange6" src="./audio/最新音效/Man/Man_tuple6.mp3"></audio>
+			<audio id="sange7" src="./audio/最新音效/Man/Man_tuple7.mp3"></audio>
+			<audio id="sange8" src="./audio/最新音效/Man/Man_tuple8.mp3"></audio>
+			<audio id="sange9" src="./audio/最新音效/Man/Man_tuple9.mp3"></audio>
+			<audio id="sange10" src="./audio/最新音效/Man/Man_tuple10.mp3"></audio>
+			<audio id="sangej" src="./audio/最新音效/Man/Man_tuple11.mp3"></audio>
+			<audio id="sangeq" src="./audio/最新音效/Man/Man_tuple12.mp3"></audio>
+			<audio id="sangek" src="./audio/最新音效/Man/Man_tuple13.mp3"></audio>
+			<audio id="sangea" src="./audio/最新音效/Man/Man_tuple1.mp3"></audio>
+			<audio id="sange2" src="./audio/最新音效/Man/Man_tuple2.mp3"></audio>
+			<!-- 顺子 -->
+			<audio id="shunzi" src="./audio/最新音效/Man/Man_shunzi.mp3"></audio>
+			<audio id="shunziyx" src="./audio/顺子音效.mp3"></audio>
+
+			<audio id="sandaier" src="./audio/最新音效/Man/Man_sandaiyidui.mp3"></audio>
+			<!-- 飞机 -->
+			<audio id="feiji" src="./audio/最新音效/Man/Man_feiji.mp3"></audio>
+			<audio id="feijiyx" src="./audio/飞机音效.mp3"></audio>
+			<!-- 连队 -->
+			<audio id="liandui" src="./audio/最新音效/Man/Man_liandui.mp3"></audio>
+			<!-- 四代二 -->
+			<audio id="sidaier" src="./audio/最新音效/Man/Man_sidaier.mp3"></audio>
+			<!-- 四代两对 -->
+			<audio id="sidaierdui" src="./audio/最新音效/Man/Man_sidailiangdui.mp3"></audio>
+			<!-- 只剩最后一张牌了 -->
+			<audio id="onlyone" src="./audio/最新音效/Man/Man_baojing1.mp3"></audio>
+			<!-- 只剩最后二张牌了 -->
+			<audio id="onlytwo" src="./audio/最新音效/Man/Man_baojing2.mp3"></audio>
+			<!-- 赢了 -->
+			<audio id="win" src="./audio/最新音效/MusicEx/MusicEx_Win.mp3"></audio>
+			<!-- 输了 -->
+			<audio id="lose" src="./audio/最新音效/MusicEx/MusicEx_Lose.mp3"></audio>
+
+		</div>
+		<!--左边玩家-->
+		<div class="left">
+
+			<div class="people1">
+				<div class="profile">
+					<img src="images/people1.jpg" />
+					<div>
+						<span class="name"></span>
+						<p class="money">
+							<span class="imgage">
+								<img src="images/金币.png" />
+							</span>
+							<span class="gold"></span>
+						</p>
+					</div>
+					<p class="remainder"></p>
+				</div>
+			</div>
+
+			<!--左边玩家牌组-->
+			<ul class="play_1"></ul>
+			<!--倒计时-->
+			<div class="clock">
+				<p>20</p>
+			</div>
+			<!--抢地主按钮-->
+			<ul class="get-boss">
+			<li>
+				<!--button按钮框，很重要-->
+				<div class="buttons">
+		<img class="yuanhuan-1" src="images/yuanhuan-1.png" />
+		<input type="button"class="get" value="抢地主">
+		</div>
+			</li>
+			<li>
+				<!--button按钮框，很重要-->
+				<div class="buttons">
+			<img class="yuanhuan-1" src="images/yuanhuan-1.png" />
+				<input type="button" class="cancel" value="不抢">
+		</div>
+			</li>
+		</ul>
+			<!--出牌按钮-->
+				<ul class="play-btn">
+			<li>
+				<div class="buttons">
+			<img class="yuanhuan-1" src="images/yuanhuan-1.png" />
+			<input type="button"class="play" value="出牌">
+		</div>
+			</li>
+			<li>
+				<div class="buttons">
+		<img class="yuanhuan-1" src="images/yuanhuan-1.png" />
+				<input type="button"class="cancel" value="过牌">
+		</div>
+			</li>
+			<li>
+				<div class="buttons">
+		<img class="yuanhuan-1" src="images/yuanhuan-1.png" />
+			<!--提示暂时用cancel的class-->
+				<input type="button"class="hint" value="提示">
+		</div>
+			</li>
+		</ul>
+		</div>
+		<!--中间玩家-->
+		<div class="mid">
+			<div class="mid_top">
+				<p class="beishu">倍数：1倍</p>
+				<p>
+					<img src="./images/" alt="">
+				</p>
+				<!--所有牌组-->
+				<p class="dizhu_img">
+					<img src="./images/dizhu.png" alt="">
+				</p>
+				<ul class="all_poker">
+					<!-- <li class="back"></li> -->
+				</ul>
+			</div>
+			<div class="mid_end">
+				<div class="people2">
+					<div class="profile">
+						<img src="images/guanyu.png" />
+						<div>
+							<span class="name"></span>
+							<p class="money">
+								<span class="imgage">
+									<img src="images/金币.png" />
+								</span>
+								<span class="gold"></span>
+							</p>
+						</div>
+						<p class="remainder"></p>
+					</div>
+				</div>
+	
+				<!--中间玩家牌组-->
+				<ul class="play_2">
+					<!-- <li style="width: 250px; height: 380px; background: url(./images/14.png) -162px -5px;"></li> -->
+				</ul>
+				<!--倒计时-->
+				<div class="clock">
+					<p>20</p>
+				</div>
+				<ul class="get-boss">
+			<li>
+				<!--button按钮框，很重要-->
+				<div class="buttons">
+		<img class="yuanhuan-1" src="images/yuanhuan-1.png" />
+		<input type="button"class="get" value="抢地主">
+		</div>
+			</li>
+			<li>
+				<!--button按钮框，很重要-->
+				<div class="buttons">
+			<img class="yuanhuan-1" src="images/yuanhuan-1.png" />
+				<input type="button" class="cancel" value="不抢">
+		</div>
+			</li>
+		</ul>
+				<ul class="play-btn">
+			<li>
+				<div class="buttons">
+		<img class="yuanhuan-1" src="images/yuanhuan-1.png" />
+			<input type="button"class="play" value="出牌">
+		</div>
+			</li>
+			<li>
+				<div class="buttons">
+		<img class="yuanhuan-1" src="images/yuanhuan-1.png" />
+				<input type="button"class="cancel" value="过牌">
+		</div>
+			</li>
+			<li>
+				<div class="buttons">
+				<img class="yuanhuan-1" src="images/yuanhuan-1.png" />
+				<input type="button"class="hint" value="提示">
+		</div>
+			</li>
+		</ul>
+			</div>
+		</div>
+		<!--右边玩家-->
+		<div class="right">
+			<div class="people3">
+				<div class="profile">
+					<img src="images/zbj.jpg" />
+					<div>
+						<span class="name"></span>
+						<p class="money">
+							<span class="imgage">
+								<img src="images/金币.png" />
+							</span>
+							<span class="gold"></span>
+						</p>
+					</div>
+					<p class="remainder"></p>
+				</div>
+			</div>
+
+			<!--右边玩家牌组-->
+			<ul class="play_3"></ul>
+			<!--倒计时-->
+			<div class="clock">
+				<p>20</p>
+			</div>
+			<!--抢地主按钮-->
+			<ul class="get-boss">
+			<li>
+				<!--button按钮框，很重要-->
+				<div class="buttons">
+			<img class="yuanhuan-1" src="images/yuanhuan-1.png" />
+		<input type="button"class="get" value="抢地主">
+		</div>
+			</li>
+			<li>
+				<!--button按钮框，很重要-->
+				<div class="buttons">
+				<img class="yuanhuan-1" src="images/yuanhuan-1.png" />
+				<input type="button" class="cancel" value="不抢">
+		</div>
+			</li>
+		</ul>
+			<!--出牌按钮-->
+			<ul class="play-btn">
+			<li>
+				<div class="buttons">
+			<img class="yuanhuan-1" src="images/yuanhuan-1.png" />
+			<input type="button"class="play" value="出牌">
+		</div>
+			</li>
+			<li>
+				<div class="buttons">
+				<img class="yuanhuan-1" src="images/yuanhuan-1.png" />
+				<input type="button"class="cancel" value="过牌">
+		</div>
+			</li>
+			<li>
+				<div class="buttons">
+			<img class="yuanhuan-1" src="images/yuanhuan-1.png" />
+			<!--提示暂时用cancel的class-->
+				<input type="button"class="hint" value="提示">
+		</div>
+			</li>
+		</ul>
+		</div>
+	</section>
+	<!--结算框-->
+	<div class="table-button">
+		<div class="table-div">
+			<table>
+				<tr>
+					<th>玩家</th>
+					<th>金额结算</th>
+					<th>总金额</th>
+				</tr>
+				<tr id="play1-information">
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr id="play2-information">
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+				<tr id="play3-information">
+					<td></td>
+					<td></td>
+					<td></td>
+				</tr>
+			</table>
+			<div class="button-area">
+				<input type="button" class="button-restart" value="再来一局" />
+				<input type="button" class="button-end" value="退出游戏" />
+			</div>
+
+		</div>
+		<div class="daji-div">
+			<img src="images/WEINASI-715.gif">
+		</div>
+		<img class="dialog" src="images/dialog.png">
+	</div>
+
+</body>
+
+</html>
