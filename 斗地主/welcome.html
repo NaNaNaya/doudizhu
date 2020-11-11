@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/welcome.css" />
+    <script type="text/javascript" src="js/jquery-1.11.1.min.js" ></script>
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js" ></script>
+    
+
+</head>
+
+<body>
+	<div class="yinpin" style="position: absolute;">
+		<audio id="first-bgmusic" loop="loop" src="audio/首页背景音效.mp3"></audio>
+	</div>
+    <video src="video/西施3.mp4"  style="width: 100%; position: absolute;left:0;top:0px ;z-index: -99" autoplay muted loop>
+    </video>
+    <button id="start" type="button">
+    	<b><a href="javascript:;">开始游戏</a></b>
+    </button>
+    <p style="text-shadow:8px 5px 8px #FF0000;font-size:50px;color: pink;position: absolute;top: 400px;left: 300px;">今夜</p>
+    <p style="text-shadow:8px 5px 8px #FF0000;font-size:40px;color: pink;position: absolute;top: 500px;left: 310px;">三更过后</p>
+    <p style="text-shadow:8px 5px 8px #FF0000;font-size:30px;color: pink;position: absolute;top: 600px;left: 320px;">你的手办</p>
+    <p style="text-shadow:8px 5px 8px #FF0000;font-size:20px;color: pink;position: absolute;top: 700px;left: 330px;">尽数归我</p>
+    <!--进度条-->
+    <div class="load-center">
+    	<div class="object object4"></div>
+    	<div class="object object3"></div>
+    	<div class="object object2"></div>
+    	<div class="object object1"></div>
+    </div>
+    <div id="fade"></div>
+	<script type="text/javascript" src="js/audio.js" ></script>
+</body>
+
+</html>
